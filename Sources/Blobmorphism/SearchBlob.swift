@@ -28,7 +28,6 @@ struct SearchBlob: View {
                         
                         search = ""
                     }
-                    .matchedGeometryEffect(id: "searchBar-button", in: nspace)
 #if os(iOS)
                 .hoverEffect()
 #endif
@@ -38,21 +37,11 @@ struct SearchBlob: View {
                 .matchedGeometryEffect(id: "searchBar", in: nspace)
                 .frame(maxWidth: 400)
             } else {
-                Button {
+                ButtonBlob(systemImage: "magnifyingglass") {
                     withAnimation(.spring()) {
                         isSearching.toggle()
                     }
-                } label: {
-                    Image(systemName: "magnifyingglass")
-                        .imageScale(.large)
-                        .matchedGeometryEffect(id: "searchBar-button", in: nspace)
                 }
-                .padding()
-#if os(iOS)
-                .contentShape(Circle())
-                .hoverEffect()
-#endif
-                .background(CircleBlob())
                 .matchedGeometryEffect(id: "searchBar", in: nspace)
             }
         }
