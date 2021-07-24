@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ButtonBlob: View {
-    let systemImage: String
-    let action: () -> Void
+public struct ButtonBlob: View {
+    public let systemImage: String
+    public let action: () -> Void
     
-    var body: some View {
+    public var body: some View {
         Button(action: action) {
             Image(systemName: systemImage)
                 .imageScale(.large)

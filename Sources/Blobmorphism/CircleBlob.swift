@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CircleBlob: View {
+public struct CircleBlob: View {
     
-    var body: some View {
+    public var body: some View {
         Group {
             if #available(iOS 15.0, macOS 12.0, tvOS 15.0, *) {
                 Circle()

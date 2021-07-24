@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct RoundedBlob: View {
-    var cornerRadius: Double = 15
+public struct RoundedBlob: View {
+    public var cornerRadius: Double = 15
     
-    var body: some View {
+    public var body: some View {
         Group {
             if #available(iOS 15.0, macOS 12.0, tvOS 15.0, *) {
                 RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)

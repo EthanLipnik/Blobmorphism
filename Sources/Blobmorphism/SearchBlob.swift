@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct SearchBlob: View {
+public struct SearchBlob: View {
     @Binding var isSearching: Bool
     @Binding var search: String
     
     @Namespace private var nspace
     
-    var body: some View {
+    public var body: some View {
         Group {
             if isSearching {
                 HStack {
