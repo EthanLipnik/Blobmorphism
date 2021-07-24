@@ -8,10 +8,15 @@
 import SwiftUI
 
 public struct SearchBlob: View {
-    @Binding var isSearching: Bool
-    @Binding var search: String
+    @Binding public var isSearching: Bool
+    @Binding public var search: String
     
     @Namespace private var nspace
+    
+    public init(isSearching: Binding<Bool>, search: Binding<String>) {
+        self._isSearching = isSearching
+        self._search = search
+    }
     
     public var body: some View {
         Group {

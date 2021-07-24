@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+#if canImport(VisualEffects)
+import VisualEffects
+#endif
 
 public struct CircleBlob: View {
+    public init() {}
     
     public var body: some View {
         Group {

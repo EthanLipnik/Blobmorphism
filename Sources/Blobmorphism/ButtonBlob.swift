@@ -11,6 +11,11 @@ public struct ButtonBlob: View {
     public let systemImage: String
     public let action: () -> Void
     
+    public init(systemImage: String, action: @escaping () -> Void) {
+        self.systemImage = systemImage
+        self.action = action
+    }
+    
     public var body: some View {
         Button(action: action) {
             Image(systemName: systemImage)

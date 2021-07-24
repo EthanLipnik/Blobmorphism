@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+#if canImport(VisualEffects)
+import VisualEffects
+#endif
 
 public struct RoundedBlob: View {
     public var cornerRadius: Double = 15
+    
+    public init(cornerRadius: Double = 15) {
+        self.cornerRadius = cornerRadius
+    }
     
     public var body: some View {
         Group {
