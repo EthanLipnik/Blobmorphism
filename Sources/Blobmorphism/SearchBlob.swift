@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 public struct SearchBlob: View {
     @Binding public var isSearching: Bool
@@ -26,6 +27,9 @@ public struct SearchBlob: View {
                         .textFieldStyle(.plain)
                         .frame(height: 60)
                         .frame(maxWidth: .infinity)
+                        .introspectTextField { textField in
+                            textField.becomeFirstResponder()
+                        }
                     Button("Cancel") {
                         withAnimation(.spring()) {
                             isSearching.toggle()
