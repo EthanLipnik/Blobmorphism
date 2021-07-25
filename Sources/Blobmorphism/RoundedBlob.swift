@@ -12,16 +12,27 @@ import VisualEffects
 
 public struct RoundedBlob: View {
     public var cornerRadius: Double = 15
+    public let intensity: BlurIntensity
     
-    public init(cornerRadius: Double = 15) {
+    public init(cornerRadius: Double = 15, intensity: BlurIntensity = .thin) {
         self.cornerRadius = cornerRadius
+        self.intensity = intensity
     }
     
     public var body: some View {
         Group {
             if #available(iOS 15.0, macOS 12.0, tvOS 15.0, *) {
-                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    .fill(Material.ultraThin)
+                switch intensity {
+                case .thin:
+                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                        .fill(Material.ultraThin)
+                case .material:
+                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                        .fill(Material.regular)
+                case .thick:
+                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                        .fill(Material.thick)
+                }
             } else {
 #if canImport(VisualEffects)
                 VisualEffectBlur(blurStyle: .systemUltraThinMaterial)

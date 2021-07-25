@@ -11,16 +11,38 @@ import VisualEffects
 #endif
 
 public struct CircleBlob: View {
-    public init() {}
+    public let intensity: BlurIntensity
+    
+    public init(intensity: BlurIntensity = .thin) {
+        self.intensity = intensity
+    }
     
     public var body: some View {
         Group {
             if #available(iOS 15.0, macOS 12.0, tvOS 15.0, *) {
-                Circle()
-                    .fill(Material.ultraThin)
+                switch intensity {
+                case .thin:
+                    Circle()
+                        .fill(Material.ultraThin)
+                case .material:
+                    Circle()
+                        .fill(Material.regular)
+                case .thick:
+                    Circle()
+                        .fill(Material.thick)
+                }
             } else {
 #if canImport(VisualEffects)
-                VisualEffectBlur(blurStyle: .systemUltraThinMaterial)
+                Group {
+                    switch intensity {
+                    case .thin:
+                        VisualEffectBlur(blurStyle: .systemThinMaterial)
+                    case .material:
+                        VisualEffectBlur(blurStyle: .regular)
+                    case .thick:
+                        VisualEffectBlur(blurStyle: .systemThickMaterial)
+                    }
+                }
                     .clipShape(Circle())
 #else
                 Circle()

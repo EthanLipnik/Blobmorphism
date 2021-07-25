@@ -9,10 +9,12 @@ import SwiftUI
 
 public struct ButtonBlob: View {
     public let systemImage: String
+    public let intensity: BlurIntensity
     public let action: () -> Void
     
-    public init(systemImage: String, action: @escaping () -> Void) {
+    public init(systemImage: String, intensity: BlurIntensity = .thin, action: @escaping () -> Void) {
         self.systemImage = systemImage
+        self.intensity = intensity
         self.action = action
     }
     
