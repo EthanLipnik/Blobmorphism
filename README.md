@@ -11,18 +11,27 @@ It has 2 main components that make it up.
 ![](Hear.png)
 
 # Usage
+## Set shadow name
+When your app is initialized (such as in your ~App.swift file), set your shadow name. This name will be whatever is in your assets catalog. If you do not have a shadow color in your assets then no elements will have shadows.
+```swift
+Blobmorphism.shadowName = "ShadowName" // Default is Shadow
+```
 
-### Blobs
+## Blobs
 
-The two main blobs are `RoundedBlob` and `CircleBlob`
+The two main blobs are `RoundedBlob` and `CircleBlob`.
+**IMPORTANT** You need to add shadows manually to these views. This is because if you want them in a `ScrollView`, you want the shadows to escape the `ScrollView` clipping.
+```swift
+.shadow(color: Color("Shadow"), radius: 30, y: 20)
+```
 
-#### Rounded
+### Rounded
 
 ```swift
 RoundedBlob() // or RoundedBlob(cornerRadius: 30)
 ```
 
-#### Circle
+### Circle
 
 *This one is even more simple. No corner radius to worry about.*
 
@@ -30,11 +39,12 @@ RoundedBlob() // or RoundedBlob(cornerRadius: 30)
 CircleBlob()
 ```
 
-### Buttons
+## Buttons
 
 There are two different types of buttons: `ButtonBlob` and `SearchBlob`. *(Search is my favorite)*
+These elements do not need manual shadow changes and already come with them.
 
-#### Standard Button
+### Standard Button
 
 ```swift
 ButtonBlob(systemImage: "square.and.arrow.up") {
@@ -42,7 +52,7 @@ ButtonBlob(systemImage: "square.and.arrow.up") {
 } // Choose whatever system image you'd like to use.
 ```
 
-#### Search Button
+### Search Button
 
 The search button switches between a standard button and a search bar. It is important that on compact UIs (iPhone, iPad Split View) that you remove the buttons next to it if it is in an `HStack`.
 

@@ -34,7 +34,7 @@ public struct SearchBlob: View {
                         withAnimation(.spring()) {
                             isSearching.toggle()
                         }
-                        
+
                         search = ""
                     }
 #if os(iOS)
@@ -42,7 +42,8 @@ public struct SearchBlob: View {
 #endif
                 }
                 .padding(.horizontal)
-                .background(RoundedBlob(cornerRadius: 30))
+                .background(RoundedBlob(cornerRadius: 30).shadow(color: Color("Shadow"), radius: 15, y: 10))
+                .compositingGroup()
                 .matchedGeometryEffect(id: "searchBar", in: nspace)
                 .frame(maxWidth: 400)
             } else {
@@ -59,7 +60,8 @@ public struct SearchBlob: View {
                 .contentShape(Circle())
                 .hoverEffect()
 #endif
-                .background(CircleBlob())
+                .background(CircleBlob().shadow(color: Color("Shadow"), radius: 15, y: 10))
+                .compositingGroup()
                 .matchedGeometryEffect(id: "searchBar", in: nspace)
             }
         }
@@ -86,7 +88,6 @@ struct SearchBlob_Previews: PreviewProvider {
             LinearGradient(colors: [Color.blue, Color.green], startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             SearchBlobPreview()
-                .shadow(radius: 30, y: 20)
                 .padding(60)
         }
     }

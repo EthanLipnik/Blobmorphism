@@ -28,7 +28,7 @@ public struct ButtonBlob: View {
         .contentShape(Circle())
         .hoverEffect()
 #endif
-        .background(CircleBlob())
+        .background(CircleBlob().shadow(color: Color("Shadow"), radius: 15, y: 10))
         .transition(.scale)
     }
 }
@@ -41,8 +41,7 @@ struct ButtonBlob_Previews: PreviewProvider {
             ButtonBlob(systemImage: "square.and.arrow.up.fill") {
                 
             }
-                .shadow(radius: 30, y: 20)
-                .padding(60)
+            .padding(60)
         }
     }
 }
