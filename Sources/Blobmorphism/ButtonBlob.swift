@@ -28,7 +28,7 @@ public struct ButtonBlob: View {
         .contentShape(Circle())
         .hoverEffect()
 #endif
-        .background(CircleBlob().shadow(color: Color("Shadow"), radius: 15, y: 10))
+        .background(CircleBlob(intensity: intensity).shadow(color: Color("Shadow"), radius: 15, y: 10))
         .transition(.scale)
     }
 }

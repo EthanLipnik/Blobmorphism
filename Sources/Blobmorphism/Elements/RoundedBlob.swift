@@ -6,9 +6,6 @@
 //
 
 import SwiftUI
-#if canImport(VisualEffects)
-import VisualEffects
-#endif
 
 public struct RoundedBlob: View {
     public var cornerRadius: Double = 15
@@ -21,26 +18,16 @@ public struct RoundedBlob: View {
     
     public var body: some View {
         Group {
-            if #available(iOS 15.0, macOS 12.0, tvOS 15.0, *) {
-                switch intensity {
-                case .thin:
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .fill(Material.ultraThin)
-                case .material:
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .fill(Material.regular)
-                case .thick:
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .fill(Material.thick)
-                }
-            } else {
-#if canImport(VisualEffects)
-                VisualEffectBlur(blurStyle: .systemUltraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
-#else
+            switch intensity {
+            case .thin:
                 RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    .fill(Color.secondary)
-#endif
+                    .fill(Material.ultraThin)
+            case .material:
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(Material.regular)
+            case .thick:
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(Material.thick)
             }
         }
     }
